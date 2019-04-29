@@ -8,8 +8,32 @@ public class ThreadedReverseGreeting {
 	
 	/* HINT: You will most likely need to do this with recursion */
 	public static void main(String[] args) {
-		for (int i = 0; i < 50; i++) {
-			Thread t1 = new Thread(()->System.out.println("Hello from Thread <" + 1 + ">"));
-		}
+//		for (int i = 1; i < 51; i++) {
+//			int num = i;
+//			Thread t1 = new Thread(()->{
+//				System.out.println("Hello from Thread <" + num + ">");
+//				Thread ti = new Thread(() -> {
+//					System.out.println("Hello from Thread <" + num + ">");
+//				});
+//				
+//				
+//				
+//			});
+//			t1.start();
+//		better code here	
+//		}
+		Thread t = new Thread(()->{
+			
+			for (int i = 1; i < 51; i++) {
+				int num = i;
+				Thread ti = new Thread(()->{
+					System.out.println("Hello from Thread <" + num + ">");
+				});
+						
+			}
+			
+		});
+		t.start();
+	
 	}
 }
