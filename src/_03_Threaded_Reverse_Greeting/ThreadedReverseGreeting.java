@@ -1,39 +1,34 @@
 package _03_Threaded_Reverse_Greeting;
 
 public class ThreadedReverseGreeting {
-  //Write a program that creates a thread (Thread 1) that creates another thread (Thread 2); 
-  //Thread 2 creates Thread 3; and so on, up to Thread 50. 
-  //Each thread should print "Hello from Thread <num>!", 
-  //but you should structure your program such that the threads print their greetings in reverse order.
-	
+	 // Write a program that creates a thread (Thread 1) that creates another
+	// thread (Thread 2);
+	// Thread 2 creates Thread 3; and so on, up to Thread 50.
+	// Each thread should print "Hello from Thread <num>!",
+	// but you should structure your program such that the threads print their
+	// greetings in reverse order.
+
 	/* HINT: You will most likely need to do this with recursion */
+
+	static Thread t = new Thread(() -> {
+		System.out.println("Hello from Thread <50>");
+		Thread[] t2 = new Thread[50];
+		for (int i = t2.length-1; i > 0; i--) {
+			int num = i;
+		//	System.out.println(num);
+			t2[i] = new Thread(() -> {
+				System.out.println("Hello from Thread <" + num + ">");
+			});
+			t2[i].start();
+		}
+		
+		
+		
+	});
+
+
 	public static void main(String[] args) {
-//		for (int i = 1; i < 51; i++) {
-//			int num = i;
-//			Thread t1 = new Thread(()->{
-//				System.out.println("Hello from Thread <" + num + ">");
-//				Thread ti = new Thread(() -> {
-//					System.out.println("Hello from Thread <" + num + ">");
-//				});
-//				
-//				
-//				
-//			});
-//			t1.start();
-//		better code here	
-//		}
-		Thread t = new Thread(()->{
-			
-			for (int i = 1; i < 51; i++) {
-				int num = i;
-				Thread ti = new Thread(()->{
-					System.out.println("Hello from Thread <" + num + ">");
-				});
-						
-			}
-			
-		});
 		t.start();
-	
+
 	}
 }
