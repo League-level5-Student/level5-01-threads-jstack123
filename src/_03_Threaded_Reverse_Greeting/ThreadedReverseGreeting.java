@@ -13,13 +13,13 @@ public class ThreadedReverseGreeting {
 	static Thread t = new Thread(() -> {
 		System.out.println("Hello from Thread <50>");
 		Thread[] t2 = new Thread[50];
-		for (int i = t2.length-1; i > 0; i--) {
+		for (int i = 49; i > 0; i--) {
 			int num = i;
 		//	System.out.println(num);
 			t2[i] = new Thread(() -> {
 				System.out.println("Hello from Thread <" + num + ">");
 			});
-			t2[i].start();
+		t2[i].start();
 		}
 		
 		
@@ -28,6 +28,7 @@ public class ThreadedReverseGreeting {
 
 
 	public static void main(String[] args) {
+		
 		t.start();
 
 	}
