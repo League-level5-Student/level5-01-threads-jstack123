@@ -10,26 +10,35 @@ public class ThreadedReverseGreeting {
 
 	/* HINT: You will most likely need to do this with recursion */
 
-	static Thread t = new Thread(() -> {
-		System.out.println("Hello from Thread <50>");
-		Thread[] t2 = new Thread[50];
-		for (int i = 49; i > 0; i--) {
-			int num = i;
-		//	System.out.println(num);
-			t2[i] = new Thread(() -> {
-				System.out.println("Hello from Thread <" + num + ">");
+//	static Thread t = new Thread(() -> {
+//		System.out.println("Hello from Thread <50>");
+//		Thread[] t2 = new Thread[50];
+//		for (int i = 49; i > 0; i--) {
+//			int num = i;
+//		//	System.out.println(num);
+//			t2[i] = new Thread(() -> {
+//				System.out.println("Hello from Thread <" + num + ">");
+//			});
+//		t2[i].start();
+//		}
+//		
+//		
+//		
+//	});
+	static void printThreads(int n) {
+		if(n>0) {
+			Thread t = new Thread(() -> {
+				System.out.println("Hello from Thread <" + n + ">");
+				printThreads(n-1);
 			});
-		t2[i].start();
+			t.start();
 		}
-		
-		
-		
-	});
-
+	}
+	
 
 	public static void main(String[] args) {
 		
-		t.start();
+		printThreads(50);
 
 	}
 }
