@@ -29,11 +29,12 @@ public class SynchronizedSwimming {
 	 */
 	private static void swimLap(Swimmer swimmer) throws InterruptedException {
 		
-		synchronized(swimmer) {
+		synchronized(swimmingPool) {
 			System.out.println(swimmer.name + " started a lap!");
-		}
-		Thread.sleep(2000);
+			Thread.sleep(2000);
 		System.out.println(swimmer.name + " finished!");
+		}
+		
 	}
 
 	public static void takeTurn(Swimmer swimmer) {
